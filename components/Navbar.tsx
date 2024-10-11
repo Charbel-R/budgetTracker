@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import Logo from "../Logo";
+import Logo from "./Logo";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { buttonVariants } from "./button";
+import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
@@ -46,11 +46,14 @@ function NavbarItem({ link, label }: { link: string; label: string }) {
   const isActive = pathname === link;
   return (
     <div className="relative flex items-center ">
-      <Link href={link} className={cn(
-        buttonVariants({variant: "ghost"}),
-        "w-full justify-start text-lg text-muted-foreground hover:text-foreground",
-        isActive && "text-foreground"
-      )}>
+      <Link
+        href={link}
+        className={cn(
+          buttonVariants({ variant: "ghost" }),
+          "w-full justify-start text-lg text-muted-foreground hover:text-foreground",
+          isActive && "text-foreground"
+        )}
+      >
         {label}
       </Link>
     </div>
