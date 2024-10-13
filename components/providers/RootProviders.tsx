@@ -10,7 +10,9 @@ export default function RootProviders({
 }: {
   children: React.ReactNode;
 }) {
+  
   const [queryClient] = React.useState(() => new QueryClient({}));
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider

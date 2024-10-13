@@ -33,7 +33,7 @@ function MobileNavbar() {
       <nav className="container flex items-center justify-between px-8">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size={"icon"}>
+            <Button variant={"ghost"} size={"icon"}>
               <Menu />
             </Button>
           </SheetTrigger>
@@ -51,7 +51,7 @@ function MobileNavbar() {
             </div>
           </SheetContent>
         </Sheet>
-        <div className="flex h-80px] min-h-[60px] item-center gap-x-4">
+        <div className="flex h-[80px] min-h-[60px] items-center gap-x-4">
           <LogoMobile />
         </div>
         <div className="flex items-center gap-2">
@@ -88,7 +88,15 @@ function DesktopNavbar() {
   );
 }
 
-function NavbarItem({ link, label, clickCallback }: { link: string; label: string; clickCallback?: () => void }) {
+function NavbarItem({
+  link,
+  label,
+  clickCallback,
+}: {
+  link: string;
+  label: string;
+  clickCallback?: () => void;
+}) {
   const pathname = usePathname();
   const isActive = pathname === link;
   return (
@@ -105,7 +113,7 @@ function NavbarItem({ link, label, clickCallback }: { link: string; label: strin
         {label}
       </Link>
       {isActive && (
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 to-orange-500" />
+        <div className="absolute -bottom-[2px] left-1/2 hidden h-[2px] w-[80%] -translate-x-1/2 rounded-xl bg-foreground md:block" />
       )}
     </div>
   );
