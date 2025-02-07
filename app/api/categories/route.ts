@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -20,7 +20,7 @@ export async function GET(request: Request) {
   const categories = await prisma.category.findMany({
     where: {
       userId: user.id,
-      ...(type && { type }),// include types in the filter if it's defined
+      ...(type && { type }), // include types in the filter if it's defined
     },
     orderBy: {
       name: "asc",

@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import { OverviewQuerySchema } from "@/schema/overview";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
@@ -41,11 +41,11 @@ async function getBalanceStats(userId: string, from: Date, to: Date) {
     },
     _sum: {
       amount: true,
-    }
+    },
   });
 
   return {
     expenses: totals.find((t) => t.type === "expense")?._sum.amount || 0,
     incomes: totals.find((t) => t.type === "income")?._sum.amount || 0,
-  }
+  };
 }

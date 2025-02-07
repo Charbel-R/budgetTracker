@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import {
   CreateTransactionSchema,
   CreateTransactionSchemaType,
@@ -99,6 +99,5 @@ export async function CreateTransaction(form: CreateTransactionSchemaType) {
         },
       },
     }),
-
   ]);
 }

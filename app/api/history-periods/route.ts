@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
@@ -26,8 +26,8 @@ async function getHistoryPeriods(userId: string) {
     orderBy: [
       {
         year: "desc",
-      }
-    ]
+      },
+    ],
   });
 
   const years = result.map((r) => r.year);

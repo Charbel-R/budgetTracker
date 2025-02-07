@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import { Period, Timeframe } from "@/lib/types";
 import { currentUser } from "@clerk/nextjs/server";
 import { getDaysInMonth } from "date-fns";
@@ -52,7 +52,7 @@ async function getHistoryData(
       return await getYearHistoryData(userId, period.year);
     }
     case "month": {
-      return await getMonthHistoryData(userId, period.year,period.month);
+      return await getMonthHistoryData(userId, period.year, period.month);
     }
   }
 }
@@ -108,7 +108,6 @@ async function getYearHistoryData(userId: string, year: number) {
   return history;
 }
 
-
 async function getMonthHistoryData(
   userId: string,
   year: number,
@@ -130,7 +129,7 @@ async function getMonthHistoryData(
         day: "asc",
       },
     ],
-  })
+  });
 
   if (!result || result.length === 0) return [];
 
